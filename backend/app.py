@@ -31,8 +31,6 @@ for i in range(len(top_headlines["articles"])):
 #Testing output
 print(articles)
 
-article = ["help me"]
-
 app = Flask(__name__)
 
 #Returns first article in articles
