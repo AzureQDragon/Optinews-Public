@@ -30,5 +30,5 @@ article = ["help me"]
 app = Flask(__name__)
 
 @app.route('/')
-def articles():
-    return article[0]
+def firstarticle():
+    return articles[0]
