@@ -25,8 +25,8 @@ for i in range(len(top_headlines["articles"])):
     if data == [None]:
         data = [top_headlines["articles"][i]["title"]]
     result = ml.classifiers.classify(modelid, data)
-    if(result.body[0]["classifications"][0]["tag_name"] == "Positive" and result.body[0]["classifications"][0]["confidence"] >= .7):
-        articles.append(top_headlines["articles"][i]["title"])
+    if(result.body[0]["classifications"][0]["tag_name"] == "Positive" and result.body[0]["classifications"][0]["confidence"] >= .5):
+        articles.append(top_headlines["articles"][i])
 
 #Testing output
 print(articles)
