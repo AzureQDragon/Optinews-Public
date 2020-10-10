@@ -5,14 +5,19 @@ from monkeylearn import MonkeyLearn
 
 ml = MonkeyLearn('ee37b454bc5c52973ec638bddbce7058882e0dbd')
 modelid = "cl_pi3C7JiL"
-newsapi = NewsApiClient(api_key='***REMOVED***')
+newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
 top_headlines = newsapi.get_top_headlines(country='us',
                                           language='en')
 
+#Lists to parse through json data
 articles = []
 data = []
 
-
+"""
+Takes all top articles and runs the content or description or title through the monkeylearn semantic
+analysis. Based on if it is postive and has a certain confidence it will append them to the articles
+list.
+"""
 for i in range(len(top_headlines["articles"])):
     data = [top_headlines["articles"][i]["content"]]
     if data == [None]:
@@ -23,12 +28,12 @@ for i in range(len(top_headlines["articles"])):
     if(result.body[0]["classifications"][0]["tag_name"] == "Positive" and result.body[0]["classifications"][0]["confidence"] >= .5):
         articles.append(top_headlines["articles"][i])
 
+#Testing output
 print(articles)
-
-article = ["help me"]
 
 app = Flask(__name__)
 
+#Returns first article in articles
 @app.route('/')
-def firstarticle():
+def FirstArticle():
     return articles[0]
