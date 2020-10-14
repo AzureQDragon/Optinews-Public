@@ -7,11 +7,6 @@ import json
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 
-print(today)
-print(week_ago)
-
-
-
 newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
 
 pages = []
@@ -46,6 +41,6 @@ for news_articles in pages:
 print(len(articles))
 print(articles)
 
-for article in articles:
-    with open('articles.json', 'a') as outfile:
-        outfile.write(json.dumps(article))
+filesave = tuple(articles)
+with open('articles.json', 'a') as outfile:
+    outfile.write(json.dumps(filesave))

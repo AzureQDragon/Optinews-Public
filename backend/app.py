@@ -8,4 +8,4 @@ app = Flask(__name__)
 @app.route('/')
 def Articles():
     with open('articles.json', 'r') as infile:
-        return json.load(infile)
+        return infile.read()
