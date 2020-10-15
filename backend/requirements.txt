@@ -1,4 +1,3 @@
 flask
 newsapi-python
-requests
-monkeylearn
+textblob
