@@ -1,0 +1,19 @@
+{
+  "name": "group-1",
+  "version": "1.0.0",
+  "description": "group 1 196 project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node your-script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS196Illinois/group-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS196Illinois/group-1/issues"
+  },
+  "homepage": "https://github.com/CS196Illinois/group-1#readme"
+}
