@@ -48,6 +48,7 @@ for news_articles in pages:
 # print(len(articles))
 # print(articles)
 
+returndict = {"length": len(articles), "articles": articles}
 app = Flask(__name__)
 
 #Returns first article in articles
@@ -58,4 +59,4 @@ def Articles():
 
 @app.route('/articles', methods=['GET'])
 def get_articles():
-    return jsonify(articles)
+    return jsonify(returndict)
