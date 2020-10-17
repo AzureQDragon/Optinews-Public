@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 function NewsCard() {
   return (
     <div>
-      <Card style={{ width: '40rem' }}>
+      <Card style={{ width: '60rem' }}>
         <Card.Body>
           <Card.Title>Covid Vaccine has been found</Card.Title>
           <Card.Text>

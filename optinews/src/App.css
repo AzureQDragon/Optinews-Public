@@ -1,7 +1,7 @@
 .navbar {
   background-image: linear-gradient(
     to bottom,
-    #546685 0,
+    #465775 0,
     #546685 100%
   ) !important;
   color: #fff;
@@ -12,7 +12,7 @@
       #fed18c 18.98%,
       rgba(255, 114, 42, 0.37) 87%
     ),
-    #fed18c;
+    #f7c780;
 }
 .logoText {
   font-family: 'Oxygen', sans-serif !important;
