@@ -5,7 +5,7 @@ from textblob import TextBlob
 from newsapi import NewsApiClient
 import json
 from collections import defaultdict
-
+from flask_cors import CORS
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 
@@ -50,7 +50,7 @@ for news_articles in pages:
 
 returndict = {"length": len(articles), "articles": articles}
 app = Flask(__name__)
-
+CORS(app)
 #Returns first article in articles
 @app.route('/')
 def Articles():
