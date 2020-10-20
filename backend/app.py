@@ -6,6 +6,7 @@ from newsapi import NewsApiClient
 import json
 from collections import defaultdict
 from flask_cors import CORS
+
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 
@@ -39,10 +40,10 @@ for news_articles in pages:
         data = [news_articles["articles"][i]["content"]]
         if data == [None]:
             data = news_articles["articles"][i]["description"]
-        if data == [None]:
+        else:
             data = news_articles["articles"][i]["title"]
         blob = TextBlob(data[0])
-        result = blob.sentiment
+        result = blob.sentiment # (sentiment (-1,1), subjectivity (-1,1))
         if(result[0] > .2):
             articles.append(news_articles["articles"][i])
 # print(len(articles))
