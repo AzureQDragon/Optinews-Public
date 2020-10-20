@@ -5,10 +5,12 @@ import Button from 'react-bootstrap/Button';
 function NewsCard() {
   return (
     <div>
-      <Card style={{ width: '40rem' }}>
+      <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4'>
         <Card.Body>
-          <Card.Title>Covid Vaccine has been found</Card.Title>
-          <Card.Text>
+          <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>
+            Covid Vaccine has been found
+          </Card.Title>
+          <Card.Text style={{ fontFamily: 'Oxygen' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             facilisis dignissim mauris et lacinia. Integer pulvinar eros ac
             velit vulputate, a elementum arcu convallis. Curabitur bibendum,
