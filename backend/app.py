@@ -26,7 +26,7 @@ for i in range(1, 5):
                                         language='en')
     pages.append(news_articles)
 
-# print(news_articles)
+print(news_articles)
 #Lists to parse through json data
 articles = []
 data = []
@@ -37,13 +37,14 @@ list.
 """
 for news_articles in pages:
     for i in range(len(news_articles["articles"])):
+        
         data = [news_articles["articles"][i]["content"]]
         if data == [None]:
             data = news_articles["articles"][i]["description"]
-        else:
+        if data == [None]:
             data = news_articles["articles"][i]["title"]
         blob = TextBlob(data[0])
-        result = blob.sentiment # (sentiment (-1,1), subjectivity (-1,1))
+        result = blob.sentiment
         if(result[0] > .2):
             articles.append(news_articles["articles"][i])
 # print(len(articles))
