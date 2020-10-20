@@ -3,9 +3,11 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import {useState, useEffect, setState} from "react";
 
-const Articles = ()  => {
-  const [hasError, setErrors] = useState(false);
-  const  [articles,setArticles]= useState({})
+
+
+function NewsCard () {
+   const [hasError, setErrors] = useState(false);
+  const  [articles,setArticles]= useState([])
  
   async function fetchData() {
     const res = await fetch("http://127.0.0.1:5000/articles");
@@ -18,17 +20,12 @@ const Articles = ()  => {
   useEffect(() => {
     fetchData();
   });
+  console.log(articles["articles"]);
 
-console.log(JSON.stringify(articles));
-return (<div>{JSON.stringify(articles)}</div>);
-}
-
-
-function NewsCard () {
   return (
     <>
       <div className="news-container">
-        {Articles.map((data, key) => {
+        {articles["articles"] && articles["articles"].map((data, key) => {
           return (
             <div key={key}>
               <News
@@ -62,4 +59,4 @@ const News = ({title, description, url}) => {
   );
 }
 
-export default Articles;
+export default NewsCard;
