@@ -47,7 +47,6 @@ for news_articles in pages:
             articles.append(news_articles["articles"][i])
 # print(len(articles))
 # print(articles)
-
 returndict = {"length": len(articles), "articles": articles}
 app = Flask(__name__)
 
