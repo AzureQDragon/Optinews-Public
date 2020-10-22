@@ -27,12 +27,16 @@
 .App-link {
   color: #61dafb;
 }
+.logoText {
+  font-family: 'Oxygen', sans-serif !important;
+  font-style: normal !important;
+  font-weight: bold !important;
+  font-size: 30px !important;
+  line-height: 38px !important;
+  margin-left: 50px;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#collasible-nav-dropdown {
+  color: white !important;
+  font-size: 25px !important;
 }
