@@ -5,6 +5,7 @@ from textblob import TextBlob
 from newsapi import NewsApiClient
 import json
 from collections import defaultdict
+from flask_cors import CORS
 
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
@@ -25,7 +26,7 @@ for i in range(1, 5):
                                         language='en')
     pages.append(news_articles)
 
-# print(news_articles)
+print(news_articles)
 #Lists to parse through json data
 articles = []
 data = []
@@ -36,6 +37,7 @@ list.
 """
 for news_articles in pages:
     for i in range(len(news_articles["articles"])):
+        
         data = [news_articles["articles"][i]["content"]]
         if data == [None]:
             data = news_articles["articles"][i]["description"]
@@ -47,9 +49,10 @@ for news_articles in pages:
             articles.append(news_articles["articles"][i])
 # print(len(articles))
 # print(articles)
+
 returndict = {"length": len(articles), "articles": articles}
 app = Flask(__name__)
-
+CORS(app)
 #Returns first article in articles
 @app.route('/')
 def Articles():
