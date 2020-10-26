@@ -18,10 +18,9 @@ function App() {
             <FilterCard />
           </Col>
           <Col>
+          <div id='news-container'>
             <NewsCard />
-            <NewsCard />
-            <NewsCard />
-            <NewsCard />
+          </div>
           </Col>
         </Row>
       </Container>
