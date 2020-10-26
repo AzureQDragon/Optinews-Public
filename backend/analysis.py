@@ -19,7 +19,7 @@ for i in range(1, 5):
     news_articles = newsapi.get_everything(from_param=week_ago,
                                         to=today,
                                         page=i,
-                                        sources='the-verge, associated-press',
+                                        sources='the-verge',
                                         language='en')
     pages.append(news_articles)
 
@@ -41,7 +41,7 @@ for news_articles in pages:
             data = news_articles["articles"][i]["title"]
         blob = TextBlob(data[0])
         result = blob.sentiment
-        if(result[0] > .2):
+        if(result[0] > .6):
             articles.append(news_articles["articles"][i])
 print(len(articles))
 print(articles)
