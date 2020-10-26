@@ -4,9 +4,8 @@ import Button from 'react-bootstrap/Button';
 import {useState, useEffect, setState} from "react";
 
 
-
 function NewsCard () {
-   const [hasError, setErrors] = useState(false);
+  const [hasError, setErrors] = useState(false);
   const  [articles,setArticles]= useState([])
  
   async function fetchData() {
