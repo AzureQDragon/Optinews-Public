@@ -10,6 +10,7 @@ function NavBar() {
           <img
             alt=''
             src={Logo}
+            borderRadius='50%'
             className='d-inline-block align-top'
           />{' '}
           OptiNews
