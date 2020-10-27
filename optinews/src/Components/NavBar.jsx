@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 
-import Logo from '../LogoToucan.svg';
+import Logo from '../toucan.png';
 import '../App.css';
 function NavBar() {
   return (
@@ -13,8 +13,9 @@ function NavBar() {
           <img
             alt=''
             src={Logo}
-            borderRadius='50%'
+            
             className='d-inline-block align-top mr-2'
+            style={{height:"50px", borderRadius:'10px'}}
           ></img>
           OptiNews
         </Navbar.Brand>

@@ -50,7 +50,7 @@ const News = ({title, description, url}) => {
 
           <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>{title}</Card.Title>
           <Card.Text style={{ fontFamily: 'Oxygen' }}>
-
+          {description}
           </Card.Text>
           <Button variant='primary' href={url}>View full article</Button>
         </Card.Body>
