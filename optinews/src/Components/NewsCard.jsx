@@ -1,29 +1,58 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import {useState, useEffect, setState} from "react";
 
-function NewsCard() {
+
+function NewsCard () {
+  const [hasError, setErrors] = useState(false);
+  const  [articles,setArticles]= useState([])
+ 
+  async function fetchData() {
+    const res = await fetch("http://127.0.0.1:5000/articles");
+    res
+      .json()
+      .then(res => setArticles(res))
+      .catch(err => setErrors(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  });
+  console.log(articles["articles"]);
+
+  return (
+    <>
+      <div className="news-container">
+        {articles["articles"] && articles["articles"].map((data, key) => {
+          return (
+            <div key={key}>
+              <News
+              key={key}
+              title={data.title}
+              description={data.description}
+              url={data.url}
+            />
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+const News = ({title, description, url}) => {
+  if (!title) return <div />
   return (
     <div>
       <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4'>
         <Card.Body>
-          <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>
-            Covid Vaccine has been found
-          </Card.Title>
+
+          <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>{title}</Card.Title>
           <Card.Text style={{ fontFamily: 'Oxygen' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            facilisis dignissim mauris et lacinia. Integer pulvinar eros ac
-            velit vulputate, a elementum arcu convallis. Curabitur bibendum,
-            velit non cursus feugiat, neque augue vestibulum ipsum, quis lacinia
-            lorem nulla non ante. Nullam venenatis orci in dolor aliquam blandit
-            a a tortor. Integer egestas libero ut dolor volutpat, at mollis
-            lorem vehicula. Vivamus eget mollis justo. Curabitur ac neque
-            lobortis, porttitor nunc non, volutpat lacus. Sed vitae dui non leo
-            maximus porta. Proin viverra suscipit nisi, vitae congue justo
-            congue in. Morbi consequat odio vel mi cursus maximus. Etiam eu
-            luctus orci. Suspendisse ornare consectetur congue.
+
           </Card.Text>
-          <Button variant='primary'>View full article</Button>
+          <Button variant='primary' href={url}>View full article</Button>
         </Card.Body>
       </Card>
     </div>

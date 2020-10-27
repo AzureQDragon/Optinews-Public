@@ -15,10 +15,9 @@ function App() {
         <Row>
           <Col></Col>
           <Col>
+          <div id='news-container'>
             <NewsCard />
-            <NewsCard />
-            <NewsCard />
-            <NewsCard />
+          </div>
           </Col>
           <Col></Col>
         </Row>

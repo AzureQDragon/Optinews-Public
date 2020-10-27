@@ -1,11 +1,8 @@
-from flask import Flask, jsonify
-import json
+
 from datetime import datetime, timedelta
 from textblob import TextBlob
 from newsapi import NewsApiClient
 import json
-from collections import defaultdict
-from flask_cors import CORS
 
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
@@ -37,7 +34,6 @@ list.
 """
 for news_articles in pages:
     for i in range(len(news_articles["articles"])):
-        
         data = [news_articles["articles"][i]["content"]]
         if data == [None]:
             data = news_articles["articles"][i]["description"]
@@ -45,20 +41,11 @@ for news_articles in pages:
             data = news_articles["articles"][i]["title"]
         blob = TextBlob(data[0])
         result = blob.sentiment
-        if(result[0] > .4):
+        if(result[0] > .6):
             articles.append(news_articles["articles"][i])
-# print(len(articles))
-# print(articles)
+print(len(articles))
+print(articles)
 
-returndict = {"length": len(articles), "articles": articles}
-app = Flask(__name__)
-CORS(app)
-#Returns first article in articles
-@app.route('/')
-def Articles():
-    with open('articles.json', 'r') as infile:
-        return infile.read()
-
-@app.route('/articles', methods=['GET'])
-def get_articles():
-    return jsonify(returndict)
+filesave = tuple(articles)
+with open('articles.json', 'a') as outfile:
+    outfile.write(json.dumps())
