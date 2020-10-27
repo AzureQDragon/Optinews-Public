@@ -45,11 +45,12 @@ const News = ({title, description, url}) => {
   if (!title) return <div />
   return (
     <div>
-      <Card style={{ width: '40rem' }}>
+      <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4'>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>
-            {description}
+
+          <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>{title}</Card.Title>
+          <Card.Text style={{ fontFamily: 'Oxygen' }}>
+
           </Card.Text>
           <Button variant='primary' href={url}>View full article</Button>
         </Card.Body>
