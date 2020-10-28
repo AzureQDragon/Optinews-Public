@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import NewsCard from './Components/NewsCard';
+import FilterCard from './Components/FilterCard';
 import './App.css';
 
 function App() {
@@ -13,13 +14,15 @@ function App() {
       <NavBar />
       <Container fluid>
         <Row>
-          <Col></Col>
           <Col>
-          <div id='news-container'>
-            <NewsCard />
-          </div>
+            <FilterCard />
           </Col>
-          <Col></Col>
+          <Col>
+            <NewsCard />
+            <NewsCard />
+            <NewsCard />
+            <NewsCard />
+          </Col>
         </Row>
       </Container>
     </div>

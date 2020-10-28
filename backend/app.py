@@ -1,64 +1,39 @@
-from flask import Flask, jsonify
-import json
-from datetime import datetime, timedelta
-from textblob import TextBlob
+from flask import Flask 
+import requests
 from newsapi import NewsApiClient
-import json
-from collections import defaultdict
-from flask_cors import CORS
+from monkeylearn import MonkeyLearn
 
-today = datetime.now().strftime('%Y-%m-%d')
-week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
-
-print(today)
-print(week_ago)
-
-
-
+ml = MonkeyLearn('ee37b454bc5c52973ec638bddbce7058882e0dbd')
+modelid = "cl_pi3C7JiL"
 newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
+top_headlines = newsapi.get_top_headlines(country='us',
+                                          language='en')
 
-pages = []
-for i in range(1, 5):
-    news_articles = newsapi.get_everything(from_param=week_ago,
-                                        to=today,
-                                        page=i,
-                                        sources='the-verge',
-                                        language='en')
-    pages.append(news_articles)
-
-print(news_articles)
 #Lists to parse through json data
 articles = []
 data = []
+
 """
 Takes all top articles and runs the content or description or title through the monkeylearn semantic
 analysis. Based on if it is postive and has a certain confidence it will append them to the articles
 list.
 """
-for news_articles in pages:
-    for i in range(len(news_articles["articles"])):
-        
-        data = [news_articles["articles"][i]["content"]]
-        if data == [None]:
-            data = news_articles["articles"][i]["description"]
-        if data == [None]:
-            data = news_articles["articles"][i]["title"]
-        blob = TextBlob(data[0])
-        result = blob.sentiment
-        if(result[0] > .4):
-            articles.append(news_articles["articles"][i])
-# print(len(articles))
-# print(articles)
+for i in range(len(top_headlines["articles"])):
+    data = [top_headlines["articles"][i]["content"]]
+    if data == [None]:
+        data = [top_headlines["articles"][i]["description"]]
+    if data == [None]:
+        data = [top_headlines["articles"][i]["title"]]
+    result = ml.classifiers.classify(modelid, data)
+    if(result.body[0]["classifications"][0]["tag_name"] == "Positive" and result.body[0]["classifications"][0]["confidence"] >= .5):
+        articles.append(top_headlines["articles"][i])
 
-returndict = {"length": len(articles), "articles": articles}
+#Testing output
+print(articles)
+
 app = Flask(__name__)
-CORS(app)
+
 #Returns first article in articles
 @app.route('/')
-def Articles():
-    with open('articles.json', 'r') as infile:
-        return infile.read()
-
-@app.route('/articles', methods=['GET'])
-def get_articles():
-    return jsonify(returndict)
+def FirstArticle():
+    return articles[0]
