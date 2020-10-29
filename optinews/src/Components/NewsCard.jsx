@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import {useState, useEffect, setState} from "react";
-
+import './newscard.css';
 
 function NewsCard () {
   const [hasError, setErrors] = useState(false);
@@ -45,7 +45,7 @@ const News = ({title, description, url}) => {
   if (!title) return <div />
   return (
     <div>
-      <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4'>
+      <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4 cards'>
         <Card.Body>
 
           <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>{title}</Card.Title>
