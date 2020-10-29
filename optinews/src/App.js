@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='Body'>
       <NavBar />
-      <Container>
+      <Container fluid>
         <Row>
           <Col></Col>
           <Col>
