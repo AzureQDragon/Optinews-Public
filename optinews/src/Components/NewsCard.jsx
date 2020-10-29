@@ -47,7 +47,6 @@ const News = ({title, description, url}) => {
     <div>
       <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4 cards'>
         <Card.Body>
-
           <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>{title}</Card.Title>
           <Card.Text style={{ fontFamily: 'Oxygen' }}>
           {description}

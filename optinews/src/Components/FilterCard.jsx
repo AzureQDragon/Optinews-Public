@@ -5,7 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 function FilterCard() {
   return (
     <div>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '20rem' }}>
         <Card.Header>Featured</Card.Header>
         <ListGroup variant='flush'>
           <ListGroup.Item>Cras justo odio</ListGroup.Item>
