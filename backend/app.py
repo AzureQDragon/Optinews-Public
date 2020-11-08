@@ -6,27 +6,28 @@ from newsapi import NewsApiClient
 import json
 from collections import defaultdict
 from flask_cors import CORS
+import textrazor
 
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 
-print(today)
-print(week_ago)
-
-
-
+textrazor.api_key = "***REMOVED***"
 newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
-
+client = textrazor.TextRazor(extractors=["entities", "topics"])
+client.set_classifiers(["textrazor_newscodes"])
+client.set_cleanup_mode("cleanHTML")
 pages = []
-for i in range(1, 5):
+for i in range(1, 2):
     news_articles = newsapi.get_everything(from_param=week_ago,
                                         to=today,
                                         page=i,
-                                        sources='the-verge',
+                                        sources='the-verge, ars-technica, associated-press',
                                         language='en')
     pages.append(news_articles)
 
-print(news_articles)
+
+
+print(len(pages))
 #Lists to parse through json data
 articles = []
 data = []
@@ -37,7 +38,7 @@ list.
 """
 for news_articles in pages:
     for i in range(len(news_articles["articles"])):
-        
+
         data = [news_articles["articles"][i]["content"]]
         if data == [None]:
             data = news_articles["articles"][i]["description"]
@@ -46,6 +47,9 @@ for news_articles in pages:
         blob = TextBlob(data[0])
         result = blob.sentiment
         if(result[0] > .4):
+            response = client.analyze_url(news_articles["articles"][i]["url"])
+            for entity in response.entities():
+                print(entity.id, entity.relevance_score, entity.confidence_score, entity.freebase_types)
             articles.append(news_articles["articles"][i])
 # print(len(articles))
 # print(articles)
