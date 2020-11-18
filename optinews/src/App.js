@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import NewsCard from './Components/NewsCard';
+import About from './Components/About';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className='Body'>
       <NavBar />
       <Container fluid>
+        <About></About>
         <Row>
           <Col></Col>
           <Col>
@@ -25,5 +27,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
