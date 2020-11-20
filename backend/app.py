@@ -22,12 +22,11 @@ for i in range(1, 2):
                                         to=today,
                                         page=i,
                                         sources='the-verge, ars-technica, associated-press',
-                                        language='en')
+                                        language='en',
+                                        page_size=50)
     pages.append(news_articles)
 
 
-
-print(len(pages))
 #Lists to parse through json data
 articles = []
 data = []
@@ -48,11 +47,7 @@ for news_articles in pages:
         result = blob.sentiment
         if(result[0] > .4):
             response = client.analyze_url(news_articles["articles"][i]["url"])
-            for entity in response.entities():
-                print(entity.id, entity.relevance_score, entity.confidence_score, entity.freebase_types)
             articles.append(news_articles["articles"][i])
-# print(len(articles))
-# print(articles)
 
 returndict = {"length": len(articles), "articles": articles}
 app = Flask(__name__)

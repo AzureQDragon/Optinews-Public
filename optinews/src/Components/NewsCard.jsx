@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import {useState, useEffect, setState} from "react";
 import './newscard.css';
 
@@ -19,7 +20,8 @@ function NewsCard () {
   useEffect(() => {
     fetchData();
   });
-  console.log(articles["articles"]);
+
+  console.log(articles['articles']);
 
   return (
     <>
@@ -32,6 +34,11 @@ function NewsCard () {
               title={data.title}
               description={data.description}
               url={data.url}
+              tags={data.tags.map((tag) => {
+                return (
+                  <Button href={tag} variant='outline-secondary'>{tag}</Button>
+                )
+              })}
             />
             </div>
           );
@@ -41,7 +48,7 @@ function NewsCard () {
   );
 };
 
-const News = ({title, description, url}) => {
+const News = ({title, description, url, tags}) => {
   if (!title) return <div />
   return (
     <div>
@@ -53,9 +60,16 @@ const News = ({title, description, url}) => {
           </Card.Text>
           <Button variant='primary' href={url}>View full article</Button>
         </Card.Body>
+        <Card.Footer>
+          <ButtonGroup id='tags'>
+            {tags}
+          </ButtonGroup>
+        </Card.Footer>
       </Card>
     </div>
   );
 }
+
+
 
 export default NewsCard;
