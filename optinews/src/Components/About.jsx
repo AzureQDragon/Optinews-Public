@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from './NavBar';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
@@ -6,7 +7,9 @@ import '../App.css';
 
 function About() {
     return(
-        <Tabs defaultActiveKey="Home" id="about-page">
+        <div className = 'About'>
+            <NavBar />
+            <Tabs defaultActiveKey="Home" id="about-page">
             <Tab eventKey="about" title="About Optinews">
                 <h1>About Optinews</h1>
                 <p>OptiNews is a space to inform and uplift.
@@ -26,6 +29,8 @@ function About() {
                 <p>We want our readers to genuinely enjoy what they are reading while gaining valuable information. We hope to target topics that pique and sustain users’ interests.</p>
             </Tab>
         </Tabs>
+        </div>
+
     );
 }
 

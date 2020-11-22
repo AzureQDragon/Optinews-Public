@@ -1,30 +1,25 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './Components/NavBar';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import NewsCard from './Components/NewsCard';
 import About from './Components/About';
+import Home from './Components/Home';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='Body'>
-      <NavBar />
-      <Container fluid>
-        <About></About>
-        <Row>
-          <Col></Col>
-          <Col>
-          <div id='news-container'>
-            <NewsCard />
-          </div>
-          </Col>
-          <Col></Col>
-        </Row>
-      </Container>
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/About" component={About}>
+            <About />
+          </Route>
+          <Route path="/" component={Home}>
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
