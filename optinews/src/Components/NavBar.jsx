@@ -4,7 +4,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import Logo from '../toucan.png';
 import '../App.css';
-function NavBar() {
+function NavBar(props) {
   return (
     <div>
       <Navbar bg='light'>
@@ -27,10 +27,17 @@ function NavBar() {
             style={{ fontFamily: 'Oxygen', marginRight: '-12rem' }}
             className='ml-auto'
           >
-            <NavDropdown.Item href='#action/3.1'>Sports</NavDropdown.Item>
-            <NavDropdown.Item href='#action/3.2'>Politics</NavDropdown.Item>
-            <NavDropdown.Item href='#action/3.3'>Pop Culture</NavDropdown.Item>
-            <NavDropdown.Item href='#action/3.4'>Misc.</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("Sports") }>Sports</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("Politics")}>Politics</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("Pop Culture")}>Pop Culture</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("Misc.")}>Misc.</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("Bayern")}>Bayern</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("College")}>College</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("as")}>Things with "as"</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature("Texas")}>Texas</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => props.setFeature(null)}>Reset</NavDropdown.Item>
+
+
           </NavDropdown>
         </Nav>
       </Navbar>

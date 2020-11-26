@@ -7,16 +7,20 @@ import Col from 'react-bootstrap/Col';
 import NewsCard from './Components/NewsCard';
 import './App.css';
 
+
 function App() {
+  const [currentFeatured, setCurrentFeatured] = React.useState(null)
+  React.useEffect(() => {console.log(currentFeatured)}, [currentFeatured])
   return (
+     
     <div className='Body'>
-      <NavBar />
+      <NavBar feature={currentFeatured} setFeature={setCurrentFeatured}/>
       <Container fluid>
         <Row>
           <Col></Col>
           <Col>
           <div id='news-container'>
-            <NewsCard />
+            <NewsCard feature={currentFeatured}/>
           </div>
           </Col>
           <Col></Col>
