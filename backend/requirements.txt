@@ -1,3 +1,5 @@
 flask
 newsapi-python
 textblob
+textrazor
+flask-cors

@@ -27,6 +27,8 @@ for i in range(1, 2):
     pages.append(news_articles)
 
 
+
+
 #Lists to parse through json data
 articles = []
 data = []
@@ -47,7 +49,26 @@ for news_articles in pages:
         result = blob.sentiment
         if(result[0] > .4):
             response = client.analyze_url(news_articles["articles"][i]["url"])
+            news_articles["articles"][i]["tags"] = []
+            for entity in response.entities():
+                for each in entity.freebase_types:
+                    if "sports" in each and "sports" not in news_articles["articles"][i]["tags"]:
+                        news_articles["articles"][i]["tags"].append("sports")
+                    if "government" in each and "government" not in news_articles["articles"][i]["tags"]:
+                        news_articles["articles"][i]["tags"].append("government")
+                    if ("tv" in each or "radio" in each or "cvg" in each or "book" in each) and "entertainment" not in news_articles["articles"][i]["tags"]:
+                        news_articles["articles"][i]["tags"].append("entertainment")
+                    if "people" in each and "people" not in news_articles["articles"][i]["tags"]:
+                        news_articles["articles"][i]["tags"].append("people")
+                    if "business" in each and "business" not in news_articles["articles"][i]["tags"]:
+                        news_articles["articles"][i]["tags"].append("business")
+
+
+            if len(news_articles["articles"][i]["tags"]) == 0:
+                news_articles["articles"][i]["tags"].append("misc")
             articles.append(news_articles["articles"][i])
+# print(len(articles))
+print(articles)
 
 returndict = {"length": len(articles), "articles": articles}
 app = Flask(__name__)
