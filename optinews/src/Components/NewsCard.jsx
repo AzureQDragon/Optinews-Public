@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import {useState, useEffect, setState} from "react";
 import './newscard.css';
 
@@ -32,8 +33,6 @@ function NewsCard (props) {
 
   useEffect(() => {
 
-    console.log("hi");
-
     if (articles["articles"]) {
       const filteredArticlesTemp = articles["articles"].filter((e) => {
         console.log(`the tags: ${e.tags}`)
@@ -64,6 +63,12 @@ function NewsCard (props) {
               title={data.title}
               description={data.description}
               url={data.url}
+              source={data.source.name}
+              tags={data.tags.map((tag) => {
+                return (
+                  <Button href={tag} variant='outline-secondary'>{tag}</Button>
+                )
+              })}
             />
             </div>
           );
@@ -74,21 +79,29 @@ function NewsCard (props) {
   );
 };
 
-const News = ({title, description, url}) => {
+const News = ({title, source, description, url, tags}) => {
   if (!title) return <div />
   return (
     <div>
       <Card style={{ width: '60rem', fontFamily: 'Oxygen' }} className='mt-4 cards'>
         <Card.Body>
           <Card.Title style={{ fontFamily: 'Oxygen', fontWeight: 'bold' }}>{title}</Card.Title>
+          <Card.Subtitle style={{ fontFamily: 'Oxygen', fontWeight: 'lighter', marginBottom: '10px', marginTop: '10px' }}>From {source}</Card.Subtitle>
           <Card.Text style={{ fontFamily: 'Oxygen' }}>
           {description}
           </Card.Text>
           <Button variant='primary' href={url}>View full article</Button>
         </Card.Body>
+        <Card.Footer>
+          <ButtonGroup id='tags'>
+            {tags}
+          </ButtonGroup>
+        </Card.Footer>
       </Card>
     </div>
   );
 }
+
+
 
 export default NewsCard;

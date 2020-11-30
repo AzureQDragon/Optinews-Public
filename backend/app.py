@@ -22,11 +22,9 @@ for i in range(1, 5):
                                         to=today,
                                         page=i,
                                         sources='the-verge, ars-technica, associated-press',
-                                        language='en')
+                                        language='en',
+                                        page_size=50)
     pages.append(news_articles)
-
-
-
 
 #Lists to parse through json data
 articles = []
@@ -46,7 +44,7 @@ for news_articles in pages:
             data = news_articles["articles"][i]["title"]
         blob = TextBlob(data[0])
         result = blob.sentiment
-        if(result[0] > .4):
+        if(result[0] > .2):
             response = client.analyze_url(news_articles["articles"][i]["url"])
             news_articles["articles"][i]["tags"] = []
             for entity in response.entities():

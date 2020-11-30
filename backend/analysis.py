@@ -11,7 +11,7 @@ week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
 
 pages = []
-for i in range(1, 7):
+for i in range(1, 5):
     news_articles = newsapi.get_everything(from_param=week_ago,
                                         to=today,
                                         page=i,
