@@ -34,7 +34,15 @@ function NewsCard (props) {
   useEffect(() => {
 
     if (articles["articles"]) {
-      const filteredArticlesTemp = articles["articles"].filter((e) => e.title.includes(props.feature))
+      const filteredArticlesTemp = articles["articles"].filter((e) => {
+        console.log(`the tags: ${e.tags}`)
+        let doesInclude = e.tags.includes(props.feature)
+        console.log(`does it include: ${doesInclude}`)
+
+        return e.tags.includes(props.feature)
+      })
+      const allTags = articles["articles"].tags
+
       setFilteredArticles({"articles": filteredArticlesTemp})
     }
   }, [props.feature])
