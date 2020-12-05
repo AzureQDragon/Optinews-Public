@@ -13,6 +13,7 @@
       rgba(255, 114, 42, 0.37) 87%
     ),
     #f7c780;
+  min-height: 100vh;
 }
 .About {
   min-height: 100vh;

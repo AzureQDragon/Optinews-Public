@@ -7,10 +7,6 @@ import json
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 
-print(today)
-print(week_ago)
-
-
 
 newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
 
@@ -23,7 +19,7 @@ for i in range(1, 5):
                                         language='en')
     pages.append(news_articles)
 
-print(news_articles)
+print(len(news_articles))
 #Lists to parse through json data
 articles = []
 data = []
@@ -41,7 +37,7 @@ for news_articles in pages:
             data = news_articles["articles"][i]["title"]
         blob = TextBlob(data[0])
         result = blob.sentiment
-        if(result[0] > .6):
+        if(result[0] > .4):
             articles.append(news_articles["articles"][i])
 print(len(articles))
 print(articles)
