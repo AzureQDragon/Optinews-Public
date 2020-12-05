@@ -15,6 +15,14 @@
     #f7c780;
   min-height: 100vh;
 }
+.About {
+  background: linear-gradient(
+      115.25deg,
+      #fed18c 18.98%,
+      rgba(255, 114, 42, 0.37) 87%
+    ),
+    #f7c780;
+}
 .logoText {
   font-family: 'Oxygen', sans-serif !important;
   font-style: normal !important;
@@ -30,3 +38,14 @@
   color: white !important;
   font-size: 25px !important;
 }
+
+#about-link {
+  color: white !important;
+  font-size: 25px !important;
+}
+
+#home-link {
+  color: white !important;
+  font-size: 25px !important;
+}
+
