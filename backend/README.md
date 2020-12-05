@@ -1,6 +1,7 @@
 # Getting started
 Download dependecies
-```pip install -r requirement.txt```
+```python3 -m pip install -r requirements.txt```
 
 Run server
-```python3 app.py```
+```flask run```
+
