@@ -78,6 +78,8 @@ for news_articles in pages:
 
             if len(news_articles["articles"][i]["tags"]) == 0:
                 news_articles["articles"][i]["tags"].append("misc")
+            news_articles["articles"][i]["tags"].sort()
+
             if (news_articles["articles"][i] not in articles):
                 articles.append(news_articles["articles"][i])
 print(len(articles))
