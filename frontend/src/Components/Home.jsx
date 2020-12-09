@@ -9,15 +9,17 @@ import NewsCard from './NewsCard';
 import '../App.css';
 
 function Home() {
+    const [currentFeatured, setCurrentFeatured] = React.useState(null);
+    React.useEffect(() => {console.log(currentFeatured)}, [currentFeatured]);
     return (
       <div className='Body'>
-        <NavBar />
+        <NavBar feature={currentFeatured} setFeature={setCurrentFeatured}/>
         <Container fluid>
           <Row>
             <Col></Col>
             <Col>
             <div id='news-container'>
-              <NewsCard />
+              <NewsCard feature={currentFeatured}/>
             </div>
             </Col>
             <Col></Col>

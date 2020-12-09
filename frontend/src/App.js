@@ -7,8 +7,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 function App() {
-  const [currentFeatured, setCurrentFeatured] = React.useState(null)
-  React.useEffect(() => {console.log(currentFeatured)}, [currentFeatured])
   return (
     <Router>
       <div>
