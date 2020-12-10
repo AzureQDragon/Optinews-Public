@@ -66,7 +66,7 @@ function NewsCard (props) {
               source={data.source.name}
               tags={data.tags.map((tag) => {
                 return (
-                  <Button href={tag} variant='outline-secondary'>{tag}</Button>
+                  <Button variant='outline-secondary'>{tag}</Button>
                 )
               })}
             />

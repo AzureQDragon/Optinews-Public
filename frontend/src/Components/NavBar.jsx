@@ -32,7 +32,7 @@ function NavBar(props) {
             className='ml-auto'
             href="/About">About</Nav.Link>
           <NavDropdown
-            title='Featured'
+            title={props.feature || 'featured'}
             id='collasible-nav-dropdown'
             style={{ fontFamily: 'Oxygen', marginRight: '-12rem' }}
             className='ml-auto'
