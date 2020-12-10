@@ -40,6 +40,8 @@ const NavRow = tw(Row)`flex flex-col sm:flex-row items-center justify-between`;
 const DownloadLink = tw.a`mt-8 sm:mt-0 transition duration-300 font-medium pb-1 border-b-2 text-blue-700 border-purple-300 hocus:border-blue-800`;
 const HeroRow = tw(Row)`flex-col lg:flex-row justify-between items-center py-20 lg:py-24 max-w-screen-2xl mx-auto`;
 const SignUpLink = tw.a`mt-8 sm:mt-0 transition duration-300 font-medium pb-1 border-b-2 text-black border-black hocus:border-black`;
+const OptiLink = tw.a`mt-8 sm:mt-9 transition duration-300 font-medium pb-1 border-b-2 text-blue-700 border-black hocus:border-black`;
+
 
 const HeadingBase = tw.h2`text-4xl sm:text-5xl font-black tracking-wide text-center`
 const DescriptionBase = tw.p`mt-4 text-sm md:text-base lg:text-lg font-medium leading-relaxed text-blue-400 max-w-xl`;
@@ -140,6 +142,11 @@ export default ({
               </SectionDescription>
             </SectionContainer>
           
+          <SectionContainer>
+            <OptiLink target="_blank" href="/Home">
+                TAKE ME TO OPTINEWS!
+              </OptiLink>
+          </SectionContainer>
           </Content2Xl>
         </Container>
         </div>
