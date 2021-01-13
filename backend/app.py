@@ -7,12 +7,16 @@ import json
 from collections import defaultdict
 from flask_cors import CORS
 import textrazor
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 today = datetime.now().strftime('%Y-%m-%d')
 week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 
-textrazor.api_key = "***REMOVED***"
-newsapi = NewsApiClient(api_key='***REMOVED***') #Insert your api key here
+textrazor.api_key = os.getenv("TEXTRAZOR_KEY")
+newsapi = NewsApiClient(api_key=os.getenv("NEWSAPI_KEY")) #Insert your api key here
 client = textrazor.TextRazor(extractors=["entities", "topics"])
 client.set_classifiers(["textrazor_newscodes"])
 client.set_cleanup_mode("cleanHTML")
